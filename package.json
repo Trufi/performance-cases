@@ -1,0 +1,18 @@
+{
+  "name": "performance-cases",
+  "description": "",
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Trufi/performance-cases.git"
+  },
+  "author": {
+    "name": "Mstislav Zhivodkov",
+    "email": "stevemyz@gmail.com",
+    "url": "https://trufi.github.io/"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "benchmark": "^2.1.4"
+  }
+}
