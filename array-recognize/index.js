@@ -3,12 +3,16 @@ var suite = new Benchmark.Suite;
 
 /*
     Output:
-    number .length x 14,018,310 ops/sec ±1.56% (87 runs sampled)
-    array .length x 814,472,900 ops/sec ±1.32% (90 runs sampled)
-    number Array.isArray x 51,928,132 ops/sec ±1.83% (85 runs sampled)
-    array Array.isArray x 51,128,730 ops/sec ±1.24% (88 runs sampled)
-    number typeof x 711,305,123 ops/sec ±4.14% (83 runs sampled)
-    array typeof x 777,428,119 ops/sec ±1.93% (89 runs sampled)
+    number .length x 14,565,867 ops/sec ±1.18% (90 runs sampled)
+    array .length x 832,315,907 ops/sec ±1.41% (88 runs sampled)
+    number .constructor === Array x 122,967,502 ops/sec ±1.52% (90 runs sampled)
+    array .constructor === Array x 825,095,208 ops/sec ±1.11% (93 runs sampled)
+    number instanceof Array x 826,161,478 ops/sec ±1.37% (92 runs sampled)
+    array instanceof Array x 558,481,951 ops/sec ±0.92% (92 runs sampled)
+    number Array.isArray x 54,587,556 ops/sec ±1.03% (91 runs sampled)
+    array Array.isArray x 52,552,617 ops/sec ±2.48% (91 runs sampled)
+    number typeof x 775,257,025 ops/sec ±1.23% (91 runs sampled)
+    array typeof x 799,213,039 ops/sec ±1.22% (90 runs sampled)
 */
 
 function setup() {
@@ -27,6 +31,30 @@ suite
         setup,
         fn() {
             a.length;
+        }
+    })
+    .add('number .constructor === Array', {
+        setup,
+        fn() {
+            n.constructor === Array;
+        }
+    })
+    .add('array .constructor === Array', {
+        setup,
+        fn() {
+            a.constructor === Array;
+        }
+    })
+    .add('number instanceof Array', {
+        setup,
+        fn() {
+            n instanceof Array;
+        }
+    })
+    .add('array instanceof Array', {
+        setup,
+        fn() {
+            a instanceof Array;
         }
     })
     .add('number Array.isArray', {
