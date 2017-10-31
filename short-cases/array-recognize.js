@@ -1,5 +1,5 @@
-var Benchmark = require('benchmark');
-var suite = new Benchmark.Suite;
+const Benchmark = require('benchmark');
+const suite = new Benchmark.Suite();
 
 /*
     Output:
@@ -16,8 +16,8 @@ var suite = new Benchmark.Suite;
 */
 
 function setup() {
-    var n = 5;
-    var a = [1, 2, 3];
+    const n = 5;
+    const a = [1, 2, 3];
 }
 
 suite
