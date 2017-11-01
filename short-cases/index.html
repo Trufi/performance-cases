@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Short cases</title>
+    <script src="https://unpkg.com/lodash@4/lodash.js"></script>
+    <script src="https://unpkg.com/benchmark@2/benchmark.js"></script>
+</head>
+<body>
+    <ul>
+        <li><a href="?array-iterate">array-iterate</a></li>
+        <li><a href="?array-recognize">array-recognize</a></li>
+        <li><a href="?object-iterate">object-iterate</a></li>
+    </ul>
+
+    Results in console
+
+    <script>
+        var modules = {
+            benchmark: Benchmark
+        };
+
+        window.require = function(name) {
+            return modules[name];
+        };
+
+        function addScript(src) {
+            var script = document.createElement('script');
+            script.src = src;
+            document.head.appendChild(script)
+        }
+
+        var name = location.search.slice(1);
+        if (name.length) {
+            console.log('Start case: ' + name);
+            addScript('./' + name + '.js');
+        }
+    </script>
+</body>
+</html>

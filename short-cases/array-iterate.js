@@ -1,12 +1,4 @@
 const Benchmark = require('benchmark');
-const suite = new Benchmark.Suite();
-
-/*
-    Output:
-    for x 975,979 ops/sec ±1.93% (79 runs sampled)
-    forEach x 416,829 ops/sec ±1.95% (81 runs sampled)
-    Fastest is for
-*/
 
 function setup() {
     const random = (() => {
@@ -23,6 +15,7 @@ function setup() {
     }
 }
 
+const suite = new Benchmark.Suite();
 suite
     .add('for', {
         setup,
@@ -47,3 +40,28 @@ suite
         console.log('Fastest is ' + this.filter('fastest').map('name'));
     })
     .run();
+
+const suite2 = new Benchmark.Suite();
+suite2
+    .add('for push to array', {
+        setup,
+        fn() {
+            const res = [];
+            for (let j = 0; j < array.length; j++) {
+                res.push(array[j] * 2);
+            }
+        }
+    })
+    .add('map to array', {
+        setup,
+        fn() {
+            const res = array.map(el => el * 2);
+        }
+    })
+    .on('cycle', function(event) {
+        console.log(String(event.target));
+    })
+    .on('complete', function() {
+        console.log('Fastest is ' + this.filter('fastest').map('name'));
+    })
+    .run({async: true});

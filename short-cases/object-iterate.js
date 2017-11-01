@@ -1,14 +1,6 @@
 const Benchmark = require('benchmark');
 const suite = new Benchmark.Suite();
 
-/*
-    Output:
-    for-in x 84,376 ops/sec ±1.94% (85 runs sampled)
-    for-in with hasOwnProperty x 46,895 ops/sec ±4.17% (77 runs sampled)
-    Object.keys for x 41,671 ops/sec ±9.54% (61 runs sampled)
-    Fastest is for-in
-*/
-
 function setup() {
     const random = (() => {
         let seed = 15;
@@ -71,4 +63,4 @@ suite
     .on('complete', function() {
         console.log('Fastest is ' + this.filter('fastest').map('name'));
     })
-    .run();
+    .run({async: true});
