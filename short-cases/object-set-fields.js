@@ -1,6 +1,8 @@
 const Benchmark = require('benchmark');
 const suite = new Benchmark.Suite();
 
+// https://v8project.blogspot.ru/2017/08/fast-properties.html
+
 suite
     .add('object set fields while creating', {
         fn() {
