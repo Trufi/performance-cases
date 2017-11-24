@@ -47,6 +47,17 @@ suite
             }
         }
     })
+    .add('for-in with Object.prototype.hasOwnProperty', {
+        setup,
+        fn() {
+            let i = 0;
+            for (const key in object) {
+                if (Object.prototype.hasOwnProperty.call(object, key)) {
+                    i += object[key];
+                }
+            }
+        }
+    })
     .add('Object.keys for', {
         setup,
         fn() {
