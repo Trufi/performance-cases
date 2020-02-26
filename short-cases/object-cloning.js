@@ -16,6 +16,21 @@ function setup() {
         left: 12,
         top: 13,
     };
+    var fields = [
+        'width',
+        'height',
+        'opacity',
+        'background',
+        'lineHeight',
+        'position',
+        'font',
+        'textAlign',
+        'color',
+        'display',
+        'fontSize',
+        'left',
+        'top',
+    ];
     var clone;
 }
 
@@ -40,6 +55,17 @@ suite
         fn() {
             clone = {};
             for (const key in obj) {
+                clone[key] = obj[key];
+            }
+            clone.display = 22;
+        },
+    })
+    .add('for by keys copy', {
+        setup,
+        fn() {
+            clone = {};
+            for (let i = 0; i < fields.length; i++) {
+                const key = fields[i];
                 clone[key] = obj[key];
             }
             clone.display = 22;
