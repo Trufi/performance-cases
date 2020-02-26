@@ -32,6 +32,11 @@ function setup() {
         'top',
     ];
     var clone;
+
+    var cloneBulkFn = new Function(
+        'obj',
+        `return {${fields.map((f) => `${f}: obj.${f}`).join(',')}}`,
+    );
 }
 
 const suite = new Benchmark.Suite();
@@ -89,6 +94,13 @@ suite
                 left: obj.left,
                 top: obj.top,
             };
+        },
+    })
+    .add('dynamic created bulk copy', {
+        setup,
+        fn() {
+            clone = cloneBulkFn(obj);
+            clone.display = 22;
         },
     })
     .on('cycle', function(event) {
